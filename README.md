@@ -25,3 +25,4 @@ Your job: investigate failures, decide whether to **fix the code or fix the test
 See `.github/workflows/ci.yml`. It runs `mvn -B verify` and uploads reports (Surefire + JaCoCo).
 
 Good luck & have fun! 🔍🟡➡️🟢
+![Build](https://github.com/Youssef-Hazem/testing//actions/workflows/ci.yml/badge.svg)
