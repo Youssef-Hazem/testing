@@ -9,7 +9,7 @@ public class Statistics {
         if (nums == null || nums.length == 0) throw new IllegalArgumentException("empty");
         long sum = 0;
         for (int n : nums) sum += n;
-        return sum / nums.length; // intentional bug (truncation)
+        return (double) sum / nums.length;
     }
 
     // BUG: even length median should be average of two middle elements
@@ -21,7 +21,7 @@ public class Statistics {
         if (n % 2 == 1) {
             return copy[n/2];
         } else {
-            return copy[n/2]; // intentional bug (should average copy[n/2 - 1] and copy[n/2])
+            return (copy[n/2 - 1] + copy[n/2]) / 2.0;
         }
     }
 

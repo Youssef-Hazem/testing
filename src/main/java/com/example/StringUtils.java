@@ -5,9 +5,11 @@ public class StringUtils {
     // BUG: case/spacing not normalized
     public boolean isPalindrome(String s) {
         if (s == null) return false;
-        int i = 0, j = s.length() - 1;
+        // Normalize the string: remove non-alphanumeric chars and convert to lower case
+        String cleaned = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int i = 0, j = cleaned.length() - 1;
         while (i < j) {
-            if (s.charAt(i) != s.charAt(j)) return false;
+            if (cleaned.charAt(i) != cleaned.charAt(j)) return false;
             i++; j--;
         }
         return true;
@@ -17,7 +19,8 @@ public class StringUtils {
     public int countVowels(String s) {
         if (s == null) return 0;
         int c = 0;
-        for (char ch : s.toCharArray()) {
+        // Convert the string to lower case to count both upper and lower case vowels
+        for (char ch : s.toLowerCase().toCharArray()) {
             if ("aeiou".indexOf(ch) >= 0) c++;
         }
         return c;
@@ -26,7 +29,8 @@ public class StringUtils {
     // BUG: splitting on single spaces only
     public String reverseWords(String s) {
         if (s == null) return null;
-        String[] parts = s.split(" ");
+        // Trim leading/trailing whitespace and split by one or more spaces
+        String[] parts = s.trim().split("\\s+");
         StringBuilder sb = new StringBuilder();
         for (int i = parts.length - 1; i >= 0; i--) {
             sb.append(parts[i]);
